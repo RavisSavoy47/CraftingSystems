@@ -15,12 +15,21 @@ public:
 	// Sets default values for this actor's properties
 	AInteractable();
 
-protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	/// <summary>
+	/// The function is called when the player interacts with an interactable
+	/// </summary>
+	UFUNCTION(BlueprintImplementableEvent)
+	void Interact(APlayerCameraManager* Controller);
 
+	UPROPERTY(EditDefaultsOnly)
+	FString Name;
+
+	UPROPERTY(EditDefaultsOnly)
+	FString Action;
+
+	UFUNCTION(BlueprintCallable, Category = "Pickups")
+	FString GetUseText() const { return FString::Printf(TEXT("%s : Press E to %s"), *Name, *Action); }
 };

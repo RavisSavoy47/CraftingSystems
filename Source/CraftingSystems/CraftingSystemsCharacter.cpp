@@ -11,6 +11,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "MotionControllerComponent.h"
 #include "XRMotionControllerBase.h" // for FXRMotionControllerBase::RightHandSourceId
+#include "Interactable.h"
+#include "GameplayController.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
@@ -297,4 +299,37 @@ bool ACraftingSystemsCharacter::EnableTouchscreenMovement(class UInputComponent*
 	}
 	
 	return false;
+}
+
+
+void ACraftingSystemsCharacter::CheckForInteractables()
+{
+	FHitResult HitResult;
+	//Gets the camera for the player
+	UCameraComponent camera;
+
+	//Starts tracing from the camera's locations and its forward
+	FVector StartTrace = camera.GetComponentLocation();
+	FVector EndTrace = (camera.GetForwardVector() * 300) + StartTrace;
+
+	//Ingnores the player if the hit result hits the player
+	FCollisionQueryParams QuaryParams;
+	QuaryParams.AddIgnoredActor(this);
+
+	//Gets the controller from teh pawn
+	AGameplayController* Controller = Cast<AGameplayController>(GetController());
+
+	//Cast a ray to check for items
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, QuaryParams) && Controller)
+	{
+		//Checsk if the item we hit is an interactable
+		if (AInteractable* Interactable = Cast<AInteractable>(HitResult.GetActor()))
+		{
+			Controller->CurrentInteractable = Interactable;
+			return;
+		}
+	}
+
+	//If we dont hit an interactable or anything set the currentInteractable to null
+	Controller->CurrentInteractable = nullptr;
 }

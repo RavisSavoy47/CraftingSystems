@@ -13,5 +13,19 @@ UCLASS()
 class CRAFTINGSYSTEMS_API APickups : public AInteractable
 {
 	GENERATED_BODY()
-	
+
+public:
+
+	/// <summary>
+	/// The constructor
+	/// </summary>
+	APickups();
+
+protected:
+
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* PickupMesh;
+
+	UPROPERTY(EditAnywhere)
+	FName ItemID;
 };

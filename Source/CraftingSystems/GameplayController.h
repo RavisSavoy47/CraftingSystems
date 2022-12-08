@@ -14,4 +14,9 @@ class CRAFTINGSYSTEMS_API AGameplayController : public APlayerController
 {
 	GENERATED_BODY()
 	
+public:
+	/// <summary>
+	/// The current interactable the player is looking at
+	/// </summary>
+	class AInteractable* CurrentInteractable;
 };
