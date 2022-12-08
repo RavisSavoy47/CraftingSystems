@@ -1,0 +1,16 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{68F5034A-413C-4CD9-3191-89BFA44E351F}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "CraftingSystems",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	]
+}
