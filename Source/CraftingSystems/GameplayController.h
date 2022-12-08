@@ -18,5 +18,6 @@ public:
 	/// <summary>
 	/// The current interactable the player is looking at
 	/// </summary>
+	UPROPERTY(BlueprintReadWrite,VisibleAnywhere)
 	class AInteractable* CurrentInteractable;
 };

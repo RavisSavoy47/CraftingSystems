@@ -159,7 +159,12 @@ public:
 
 protected:
 	
+	/// <summary>
+	/// Checks if their is an interactable item in the players view
+	/// </summary>
 	void CheckForInteractables();
+
+	virtual void Tick(float deltaTime)override;
 
 	/** Fires a projectile. */
 	void OnFire();

@@ -316,20 +316,27 @@ void ACraftingSystemsCharacter::CheckForInteractables()
 	FCollisionQueryParams QuaryParams;
 	QuaryParams.AddIgnoredActor(this);
 
-	//Gets the controller from teh pawn
-	AGameplayController* Controller = Cast<AGameplayController>(GetController());
+	//Gets the controller from the pawn
+	AGameplayController* PController = Cast<AGameplayController>(GetController());
 
 	//Cast a ray to check for items
-	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, QuaryParams) && Controller)
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, QuaryParams) && PController)
 	{
-		//Checsk if the item we hit is an interactable
+		//Checks if the item we hit is an interactable
 		if (AInteractable* Interactable = Cast<AInteractable>(HitResult.GetActor()))
 		{
-			Controller->CurrentInteractable = Interactable;
+			PController->CurrentInteractable = Interactable;
 			return;
 		}
 	}
 
 	//If we dont hit an interactable or anything set the currentInteractable to null
-	Controller->CurrentInteractable = nullptr;
+	PController->CurrentInteractable = nullptr;
+}
+
+void ACraftingSystemsCharacter::Tick(float deltaTime)
+{
+	Super::Tick(deltaTime);
+
+	CheckForInteractables();
 }
