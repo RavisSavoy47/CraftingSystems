@@ -157,14 +157,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	uint8 bUsingMotionControllers : 1;
 
-protected:
-	
 	/// <summary>
 	/// Checks if their is an interactable item in the players view
 	/// </summary>
 	void CheckForInteractables();
 
-	virtual void Tick(float deltaTime)override;
+protected:
+	
+	
 
 	/** Fires a projectile. */
 	void OnFire();

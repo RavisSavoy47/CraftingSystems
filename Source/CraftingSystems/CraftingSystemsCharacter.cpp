@@ -333,10 +333,3 @@ void ACraftingSystemsCharacter::CheckForInteractables()
 	//If we dont hit an interactable or anything set the currentInteractable to null
 	PController->CurrentInteractable = nullptr;
 }
-
-void ACraftingSystemsCharacter::Tick(float deltaTime)
-{
-	Super::Tick(deltaTime);
-
-	CheckForInteractables();
-}
