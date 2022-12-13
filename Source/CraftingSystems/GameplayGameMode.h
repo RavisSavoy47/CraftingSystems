@@ -15,7 +15,7 @@ class CRAFTINGSYSTEMS_API AGameplayGameMode : public AGameModeBase
 	
 public:
 
-		class UDataTable* GetItemDB() const { return ItemDB; }
+	class UDataTable* GetItemDB() const { return ItemDB; }
 
 protected:
 	UPROPERTY(EditDefaultsOnly)
