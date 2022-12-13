@@ -305,12 +305,10 @@ bool ACraftingSystemsCharacter::EnableTouchscreenMovement(class UInputComponent*
 void ACraftingSystemsCharacter::CheckForInteractables()
 {
 	FHitResult HitResult;
-	//Gets the camera for the player
-	UCameraComponent camera;
 
 	//Starts tracing from the camera's locations and its forward
-	FVector StartTrace = camera.GetComponentLocation();
-	FVector EndTrace = (camera.GetForwardVector() * 300) + StartTrace;
+	FVector StartTrace = FirstPersonCameraComponent->GetComponentLocation();
+	FVector EndTrace = (FirstPersonCameraComponent->GetForwardVector() * 300) + StartTrace;
 
 	//Ingnores the player if the hit result hits the player
 	FCollisionQueryParams QuaryParams;
@@ -329,7 +327,9 @@ void ACraftingSystemsCharacter::CheckForInteractables()
 			return;
 		}
 	}
-
-	//If we dont hit an interactable or anything set the currentInteractable to null
-	PController->CurrentInteractable = nullptr;
+	else{
+		//If we dont hit an interactable or anything set the currentInteractable to null
+		PController->CurrentInteractable = nullptr;
+	}
+	
 }

@@ -163,8 +163,6 @@ public:
 	void CheckForInteractables();
 
 protected:
-	
-	
 
 	/** Fires a projectile. */
 	void OnFire();
