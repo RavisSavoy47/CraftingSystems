@@ -22,7 +22,7 @@ public:
 	/// The function is called when the player interacts with an interactable
 	/// </summary>
 	UFUNCTION(BlueprintImplementableEvent)
-	void Interact(APlayerCameraManager* Controller);
+	void Interact(AGameplayController* Controller);
 
 	UPROPERTY(EditDefaultsOnly)
 	FString Name;

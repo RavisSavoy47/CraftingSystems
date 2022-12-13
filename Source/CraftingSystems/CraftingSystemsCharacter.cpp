@@ -115,6 +115,8 @@ void ACraftingSystemsCharacter::SetupPlayerInputComponent(class UInputComponent*
 	// set up gameplay key bindings
 	check(PlayerInputComponent);
 
+	PlayerInputComponent->BindAction("FindInteractable", IE_Pressed, this, &ACraftingSystemsCharacter::CheckForInteractables);
+
 	// Bind jump events
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
@@ -308,17 +310,17 @@ void ACraftingSystemsCharacter::CheckForInteractables()
 
 	//Starts tracing from the camera's locations and its forward
 	FVector StartTrace = FirstPersonCameraComponent->GetComponentLocation();
-	FVector EndTrace = (FirstPersonCameraComponent->GetForwardVector() * 300) + StartTrace;
+	FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
+	FVector EndTrace = ((ForwardVector * 5000.0f) + StartTrace);
 
 	//Ingnores the player if the hit result hits the player
-	FCollisionQueryParams QuaryParams;
-	QuaryParams.AddIgnoredActor(this);
+	FCollisionQueryParams* TraceParams = new FCollisionQueryParams();
 
 	//Gets the controller from the pawn
 	AGameplayController* PController = Cast<AGameplayController>(GetController());
 
 	//Cast a ray to check for items
-	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, QuaryParams) && PController)
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, *TraceParams))
 	{
 		//Checks if the item we hit is an interactable
 		if (AInteractable* Interactable = Cast<AInteractable>(HitResult.GetActor()))

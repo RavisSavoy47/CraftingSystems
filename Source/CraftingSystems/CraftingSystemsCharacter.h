@@ -157,10 +157,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	uint8 bUsingMotionControllers : 1;
 
+private:
+
 	/// <summary>
 	/// Checks if their is an interactable item in the players view
 	/// </summary>
 	void CheckForInteractables();
+	void StopCheckForInteractables();
 
 protected:
 
