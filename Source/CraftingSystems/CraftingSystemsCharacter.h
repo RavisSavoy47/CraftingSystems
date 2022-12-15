@@ -163,7 +163,6 @@ private:
 	/// Checks if their is an interactable item in the players view
 	/// </summary>
 	void CheckForInteractables();
-	void StopCheckForInteractables();
 
 protected:
 

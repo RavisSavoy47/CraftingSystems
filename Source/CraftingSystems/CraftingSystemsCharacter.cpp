@@ -303,7 +303,6 @@ bool ACraftingSystemsCharacter::EnableTouchscreenMovement(class UInputComponent*
 	return false;
 }
 
-
 void ACraftingSystemsCharacter::CheckForInteractables()
 {
 	FHitResult HitResult;
