@@ -21,11 +21,16 @@ public:
 	/// </summary>
 	APickups();
 
+	UPROPERTY(EditAnywhere)
+	FName ItemID;
+
+	UFUNCTION(BlueprintCallable, Category = "Pickups")
+	FName GetID() { return ItemID; }
+
 protected:
 
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* PickupMesh;
 
-	UPROPERTY(EditAnywhere)
-	FName ItemID;
+	
 };

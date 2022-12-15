@@ -5,6 +5,7 @@
 #include "Interactable.h"
 #include "Components/InputComponent.h"
 #include "GameplayGameMode.h"
+#include "Pickups.h"
 
 
 void AGameplayController::Interact()
@@ -26,17 +27,31 @@ void AGameplayController::SetupInputComponent()
 }
 
 
-void AGameplayController::AddItemToInventoryByID(FName ID)
+void AGameplayController::AddItemToInventoryByID()
 {
 	/// <summary>
 	/// sets the gamemode to the worlds current gamemode
 	/// </summary>
 	/// <param name="ID">The id for the item that is added</param>
 	AGameplayGameMode* GameMode = Cast<AGameplayGameMode>(GetWorld()->GetAuthGameMode());
+	/// <summary>
+	/// Gets the data table from the gamemode
+	/// </summary>
 	UDataTable* ItemTable = GameMode->GetItemDB();
+	
+	/// <summary>
+	/// gets the items id from the current item
+	/// </summary>
+	APickups* itemID = Cast<APickups>(CurrentInteractable);
 
-	FInventoryItem* ItemToAdd = ItemTable->FindRow<FInventoryItem>(ID, "");
+	/// <summary>
+	/// Finds the row in the data table for that item
+	/// </summary>
+	FInventoryItem* ItemToAdd = ItemTable->FindRow<FInventoryItem>(itemID->GetID(), "", true);
 
+	/// <summary>
+	/// Adds the item to the inventory
+	/// </summary>
 	if (ItemToAdd)
 	{
 		Inventory.Add(*ItemToAdd);

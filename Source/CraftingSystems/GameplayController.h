@@ -21,7 +21,7 @@ public:
 	/// Puts the item in the players inventory using its ID
 	/// </summary>
 	UFUNCTION(BlueprintCallable, Category = "Utilties")
-	void AddItemToInventoryByID(FName ID);
+	void AddItemToInventoryByID();
 
 	/// <summary>
 	/// The current interactable the player is looking at
