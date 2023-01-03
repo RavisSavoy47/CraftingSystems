@@ -18,10 +18,19 @@ class CRAFTINGSYSTEMS_API AGameplayController : public APlayerController
 public:
 	
 	/// <summary>
+	/// Reloads the player's inventory 
+	/// </summary>
+	UFUNCTION(BlueprintImplementableEvent)
+	void ReloadInventory();
+
+	/// <summary>
 	/// Puts the item in the players inventory using its ID
 	/// </summary>
 	UFUNCTION(BlueprintCallable, Category = "Utilties")
-	void AddItemToInventoryByID();
+	void AddItemToInventoryByID(FName ID);
+
+	UFUNCTION(BlueprintCallable, Category = "Utilties")
+	void CraftItem(FInventoryItem ItemA, FInventoryItem ItemB, AGameplayController* Controller);
 
 	/// <summary>
 	/// The current interactable the player is looking at

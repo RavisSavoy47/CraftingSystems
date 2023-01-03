@@ -8,6 +8,32 @@
 #include "Pickups.h"
 
 
+void AGameplayController::CraftItem(FInventoryItem ItemA, FInventoryItem ItemB, AGameplayController* Controller)
+{
+
+	//Check if 
+	for (auto Craft : ItemB.CraftCombinations)
+	{
+		if (Craft.ComponentID == ItemA.ItemID)
+		{
+			if (Craft.bDestroyItemA)
+			{
+				Inventory.RemoveSingle(ItemA);
+			}
+
+			if (Craft.bDestroyItemB)
+			{
+				Inventory.RemoveSingle(ItemB);
+			}
+
+			AddItemToInventoryByID(Craft.ProductID);
+
+			ReloadInventory();
+		}
+	}
+
+}
+
 void AGameplayController::Interact()
 {
 	/// <summary>
@@ -27,7 +53,7 @@ void AGameplayController::SetupInputComponent()
 }
 
 
-void AGameplayController::AddItemToInventoryByID()
+void AGameplayController::AddItemToInventoryByID(FName ID)
 {
 	/// <summary>
 	/// sets the gamemode to the worlds current gamemode
@@ -47,7 +73,7 @@ void AGameplayController::AddItemToInventoryByID()
 	/// <summary>
 	/// Finds the row in the data table for that item
 	/// </summary>
-	FInventoryItem* ItemToAdd = ItemTable->FindRow<FInventoryItem>(itemID->GetID(), "", true);
+	FInventoryItem* ItemToAdd = ItemTable->FindRow<FInventoryItem>(ID, "", true);
 
 	/// <summary>
 	/// Adds the item to the inventory
