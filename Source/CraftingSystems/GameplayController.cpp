@@ -11,23 +11,25 @@
 void AGameplayController::CraftItem(FInventoryItem ItemA, FInventoryItem ItemB, AGameplayController* Controller)
 {
 
-	//Check if 
+	//checks the craft combinations for the item ids
 	for (auto Craft : ItemB.CraftCombinations)
 	{
+		//checks the item ids match and crafts the new object
 		if (Craft.ComponentID == ItemA.ItemID)
 		{
+			//removes itemA 
 			if (Craft.bDestroyItemA)
 			{
 				Inventory.RemoveSingle(ItemA);
 			}
-
+			//removes itemb
 			if (Craft.bDestroyItemB)
 			{
 				Inventory.RemoveSingle(ItemB);
 			}
-
+			//then adds the product to the inventory
 			AddItemToInventoryByID(Craft.ProductID);
-
+			//reloads the inventory
 			ReloadInventory();
 		}
 	}

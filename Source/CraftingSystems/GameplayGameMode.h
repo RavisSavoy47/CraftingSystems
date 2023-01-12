@@ -14,7 +14,9 @@ class CRAFTINGSYSTEMS_API AGameplayGameMode : public AGameModeBase
 	GENERATED_BODY()
 	
 public:
-
+	/// <summary>
+	/// Gets the items ID from the data table
+	/// </summary>
 	class UDataTable* GetItemDB() const { return ItemDB; }
 
 protected:

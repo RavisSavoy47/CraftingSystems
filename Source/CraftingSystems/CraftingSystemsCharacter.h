@@ -21,7 +21,9 @@ struct FCraftingInfo : public FTableRowBase
 	GENERATED_BODY()
 
 public:
-
+	/// <summary>
+	/// 
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FName ComponentID;
 

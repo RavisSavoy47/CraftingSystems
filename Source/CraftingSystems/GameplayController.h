@@ -28,7 +28,9 @@ public:
 	/// </summary>
 	UFUNCTION(BlueprintCallable, Category = "Utilties")
 	void AddItemToInventoryByID(FName ID);
-
+	/// <summary>
+	/// Crafts the item by using 2 items to create a new one
+	/// </summary>
 	UFUNCTION(BlueprintCallable, Category = "Utilties")
 	void CraftItem(FInventoryItem ItemA, FInventoryItem ItemB, AGameplayController* Controller);
 
