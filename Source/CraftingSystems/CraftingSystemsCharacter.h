@@ -22,17 +22,25 @@ struct FCraftingInfo : public FTableRowBase
 
 public:
 	/// <summary>
-	/// 
+	/// The items id for each component
 	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FName ComponentID;
-
+	/// <summary>
+	/// The id of the product 
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FName ProductID;
 
+	/// <summary>
+	/// Removes the first item
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bDestroyItemA;
 
+	/// <summary>
+	/// Removes the second item
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bDestroyItemB;
 };
@@ -43,7 +51,9 @@ struct FInventoryItem : public FTableRowBase
 	GENERATED_BODY()
 
 public:
-
+	/// <summary>
+	/// The base values of each item
+	/// </summary>
 	FInventoryItem()
 	{
 		Name = FText::FromString("Item");

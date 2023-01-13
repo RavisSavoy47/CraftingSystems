@@ -21,14 +21,22 @@ public:
 	/// </summary>
 	APickups();
 
+	/// <summary>
+	/// the items id
+	/// </summary>
 	UPROPERTY(EditAnywhere)
 	FName ItemID;
 
+	/// <summary>
+	/// Gets the id of the item
+	/// </summary>
 	UFUNCTION(BlueprintCallable, Category = "Pickups")
 	FName GetID() { return ItemID; }
 
 protected:
-
+	/// <summary>
+	/// The mesh of the item
+	/// </summary>
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* PickupMesh;
 

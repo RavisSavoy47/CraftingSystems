@@ -24,12 +24,21 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void Interact(AGameplayController* Controller);
 
+	/// <summary>
+	/// The name of the item
+	/// </summary>
 	UPROPERTY(EditDefaultsOnly)
 	FString Name;
 
+	/// <summary>
+	/// What the item is used for
+	/// </summary>
 	UPROPERTY(EditDefaultsOnly)
 	FString Action;
 
+	/// <summary>
+	/// Called when the item is used
+	/// </summary>
 	UFUNCTION(BlueprintCallable, Category = "Pickups")
 	FString GetUseText() const { return FString::Printf(TEXT("%s : Press E to %s"), *Name, *Action); }
 };
