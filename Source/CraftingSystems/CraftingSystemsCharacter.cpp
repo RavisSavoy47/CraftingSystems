@@ -122,7 +122,7 @@ void ACraftingSystemsCharacter::SetupPlayerInputComponent(class UInputComponent*
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	// Bind fire event
-	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ACraftingSystemsCharacter::OnFire);
+	//PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ACraftingSystemsCharacter::OnFire);
 
 	// Enable touchscreen input
 	EnableTouchscreenMovement(PlayerInputComponent);
@@ -279,7 +279,7 @@ void ACraftingSystemsCharacter::CheckForInteractables()
 	//Starts tracing from the camera's locations and its forward
 	FVector StartTrace = FirstPersonCameraComponent->GetComponentLocation();
 	FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
-	FVector EndTrace = ((ForwardVector * 5000.0f) + StartTrace);
+	FVector EndTrace = ((ForwardVector * 1000.0f) + StartTrace);
 
 	//Ingnores the player if the hit result hits the player
 	FCollisionQueryParams* TraceParams = new FCollisionQueryParams();
