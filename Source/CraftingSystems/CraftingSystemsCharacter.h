@@ -169,6 +169,7 @@ class ACraftingSystemsCharacter : public ACharacter
 public:
 	ACraftingSystemsCharacter();
 
+	void Tick(float DeltaSeconds) override;
 protected:
 	virtual void BeginPlay();
 

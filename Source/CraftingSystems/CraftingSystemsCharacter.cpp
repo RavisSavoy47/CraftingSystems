@@ -265,6 +265,13 @@ bool ACraftingSystemsCharacter::EnableTouchscreenMovement(class UInputComponent*
 	return false;
 }
 
+
+void ACraftingSystemsCharacter::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	CheckForInteractables();
+}
+
 void ACraftingSystemsCharacter::CheckForInteractables()
 {
 	FHitResult HitResult;
