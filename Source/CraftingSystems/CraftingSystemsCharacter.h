@@ -62,33 +62,65 @@ public:
 		Value = 10;
 	}
 
+	/// <summary>
+	/// The ID for the item
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FName ItemID;
 
+	/// <summary>
+	/// Gets the item that is a pickup
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSubclassOf<class APickups> ItemPickup;
 
+	/// <summary>
+	/// The Name of the item
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FText Name;
 
+	/// <summary>
+	/// The action the item is used for
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FText Action;
 
+	/// <summary>
+	/// How much it would cost to craft
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int32 Value;
 
+	/// <summary>
+	/// The display image for the item
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UTexture2D* Thumbnail;
 
+	/// <summary>
+	/// Descrides what the item is and what it can do
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FText Description;
 
+	/// <summary>
+	/// What it takes to craft
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<FCraftingInfo> CraftCombinations;
 
+	/// <summary>
+	/// If the item is a usable or not
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bCanbeUsed;
 
+	/// <summary>
+	/// Checks if the items iD matches an item id in the inventory
+	/// </summary>
+	/// <param name="Item">The current item</param>
+	/// <returns>if the items id is the same or not</returns>
 	bool operator==(const FInventoryItem& Item) const
 	{
 		if (ItemID == Item.ItemID)

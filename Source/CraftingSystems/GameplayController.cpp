@@ -50,7 +50,9 @@ void AGameplayController::Interact()
 void AGameplayController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
-
+	/// <summary>
+	/// Sets the use button to the controller
+	/// </summary>
 	InputComponent->BindAction("Use", IE_Pressed, this, &AGameplayController::Interact);
 }
 
