@@ -169,6 +169,10 @@ class ACraftingSystemsCharacter : public ACharacter
 public:
 	ACraftingSystemsCharacter();
 
+	/// <summary>
+	/// Called every frame 
+	/// </summary>
+	/// <param name="DeltaSeconds">How much time has passed for each update</param>
 	void Tick(float DeltaSeconds) override;
 protected:
 	virtual void BeginPlay();
